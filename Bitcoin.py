@@ -33,3 +33,5 @@ def bitcoin():
             print(f'your balance is ${btc_to_usd_result[i]}K')
             break
         start_year += 1
+
+bitcoin()

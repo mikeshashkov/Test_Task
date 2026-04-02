@@ -1,0 +1,172 @@
+import random, time, math
+def longer_word():
+    string = input('string: ')
+
+    count, max_word, current_max = 0, 0, 0
+
+    for i in string:
+        if i == ' ':
+            count = 0
+            if current_max > max_word:
+                max_word = current_max
+        else:
+            count += 1
+            current_max = count
+
+    print('Longer word has', max_word, 'letters')
+def bands():
+    first_band = [random.randint(30, 80) for x in range(5)]
+    print(first_band)
+    second_band = [random.randint(40, 90) for x in range(5)]
+    print(second_band)
+
+    result = ['win' if first_band[i]+second_band[i]<100 else 'lose' for i in range(5)]
+    print(result)
+def num_table():
+    for row in range(6):
+        for line in range(row, 11+row, 2):
+            print(line, end = '\t')
+        print()
+def ladder():
+    levels = int(input('levels: '))
+    for row in range(1, levels+1):
+        for line in range(1, row+1):
+            print(row, end='\t')
+        print()
+def window():
+    for row in range(10):
+        for line in range(10):
+            if line == 0 or line == 9:
+                print('|', end='')
+            else:
+                if row == 0 or row == 9:
+                    print('---', end='')
+                else:
+                    print('   ', end='')
+        print()
+def prime_numbers():
+    amount = int(input('how many numbers: '))
+    numbers_list = []
+    for i in range(1, amount+1):
+        print(i, 'number:', end='')
+        n = int(input())
+        numbers_list.append(n)
+    count = 0
+    prime = None
+
+    for isprime in numbers_list:
+        for divider in range(2, isprime):
+            if isprime % divider == 0:
+                prime = False
+                break
+            else:
+                prime = True
+        if prime == True or isprime == 2:
+            print(f'{isprime}: yes')
+            count += 1
+
+    print('Количество простых чисел в последовательности:', count)
+def time_count():
+    n = 0
+    while n < 12:
+        time.sleep(1)
+        n+=1
+        print('\r', n, end='')
+def gap():
+    length = int(input('how long?: '))
+    for row in range(1, length//2+1):
+        for line in range(1, length+1):
+            if line <= row or line > (length-row):
+                print(line, end='\t')
+            else:
+                print('.', end='\t')
+        print()
+def some_list():
+    result, curr_str = input('type_something: '), ''
+    print(result)
+    list_result = []
+    for element in result:
+        curr_str += element
+        if len(curr_str) % 2 == 0: list_result.append(curr_str); curr_str = ''
+    print(list_result)
+def rec(n): #Рекурсия
+    if n == 1:
+        return 1
+    return n*rec(n-1)
+def sum_numbers(n):
+    if n<1:
+        print('Error')
+        return 0
+    if n == 1:
+        return 1
+    return n+sum_numbers(n-1)
+def fibonacci():
+    prew1, prew, a = 0, 1, 1
+    fib_line = [prew1, prew]
+
+    while a < 90:
+        a = prew1 + prew
+        fib_line.append(a)
+        prew, prew1 = a, prew
+
+    print(fib_line)
+    for n in fib_line:
+        print('\r', n, end='')
+        time.sleep(1)
+def fibonacci_symbols():
+    fib_line = []
+    prew1, prew, a = 0, 1, 1
+    while a < 89:
+        a = prew1+prew
+        fib_line.append(a)
+        prew, prew1 = a, prew
+    n = 0
+    for i in fib_line:
+        print(' '*i+'#')
+
+def euclidean_distance():
+    x1, y1, x2, y2 = float(input('x1:')), float(input('y1:')), float(input('x2:')), float(input('y2:'))
+
+    result = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
+    print(result)
+
+def quadratic_equation():
+    print(f'ax^2 + bx + c = 0')
+    a, b, c = float(input('a:')), float(input('b:')), float(input('c:'))
+
+    d = b ** 2 - 4 * a * c
+
+    if d < 0:
+        print('Нет корней')
+    elif d == 0:
+        x = -1 * (b / (2 * a))
+        print(x)
+    else:
+        x1 = (-1 * b - math.sqrt(d)) / (2 * a)
+        x2 = (-1 * b + math.sqrt(d)) / (2 * a)
+        print(min(x1, x2))
+        print(max(x1, x2))
+
+
+def digital_root():
+    n = int(input('Введите число для вычисления цифрового корня: '))
+    result = 0
+    while n != 0:
+        result += n % 10
+        n //= 10
+        if n == 0 and result >= 10:
+            n = result
+            result = 0
+
+    print('Результат:', result)
+
+def count_sum_from_zero_to_your_num():
+    number = int(input('type a number to which you want to count: '))
+
+    print(sum([i for i in range(1, number + 1)]))
+
+def delete_indexes_that_divides_by_3():
+    s = input('delete indexes that divides by 3: ')
+    math = [j for j in range(len(s)) if j % 3 != 0]
+    print(''.join([s[i] for i in math]))

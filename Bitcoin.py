@@ -1,10 +1,10 @@
-def bitcoin():
+def bitcoin():  #Расчёт будущего баланса BTC и $ по годам и расчёт времени "Пенсии"
     print('input your amount of Bitcoin', end=': ')
     btc = float(input())
 
     btc_to_usd = 99 # курс BTC в тыс. долл. на 2024 год
     btc_to_usd_list = []
-    # Считаем прогнозный кус по каждому году на ближайшие 16 лет:
+    # Считаем прогнозный кус по каждому году на ближайшие 16 лет (берём +24% каждый год):
     for _ in range(16):
         btc_to_usd_list.append(round(btc_to_usd, 2))
         btc_to_usd*=1.24
